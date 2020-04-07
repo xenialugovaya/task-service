@@ -55,9 +55,6 @@ $(document).ready(function() {
         "ajax": {
             url: "../../Model/tasks_fetch.php",
             type: "POST",
-            data: {
-                action: 'index_fetch'
-            }
         }
     });
 

@@ -16,7 +16,8 @@
                             <textarea name="edit_task_field" id="edit_task_field" class="form-control"
                                 placeholder="Изменить задачу"></textarea>
                             <input type="hidden" name="edit_task_id" id="edit_task_id" />
-                            <span class="text-success" id="edit_message"></span>
+                            <span class="text-success" id="edit-message-success"></span>
+                            <span class="text-danger" id="edit-message-error"></span>
                         </form>
                     </div>
                 </div>
@@ -79,8 +80,11 @@ $('#edit_task_form').validate({
                 action: 'edit'
             },
             success: function(response) {
-                $('#edit_message').html('Запись успешно изменена');
-                console.log(response);
+                if (response) {
+                    $('#message-success').html('Запись успешно изменена');
+                } else {
+                    $('#message-error').html('Произошла ошибка. Попробуйте снова');
+                }
             }
         });
     }

@@ -46,15 +46,13 @@ $(document).ready(function() {
 
     const dataTable = $('#task_table').DataTable({
         "lengthMenu": [3, 5, 10],
+        "order": [],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Russian.json"
         },
         "ajax": {
             url: "../Model/tasks_fetch.php",
             type: "POST",
-            data: {
-                action: 'fetch'
-            }
         }
     });
 });

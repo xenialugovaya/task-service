@@ -21,13 +21,9 @@ if ($_POST["action"] == "add_task") {
     $insert = $db::sql($query, $args);
 
     if ($insert) {
-        $output = array(
+        $output = [
             'success' => true,
-        );
-    } else {
-        $output = array(
-            'error' => true,
-        );
+        ];
     }
     echo json_encode($output);
 

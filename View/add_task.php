@@ -19,7 +19,8 @@
                             <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
                             <br />
                             <textarea name="task" id="task" class="form-control" placeholder="Задача"></textarea>
-                            <span class="text-success" id="message"></span>
+                            <span class="text-success" id="message-success"></span>
+                            <span class="text-danger" id="message-error"></span>
                         </form>
                     </div>
                 </div>
@@ -78,7 +79,12 @@ $('#create_task_form').validate({
                 action: 'add_task'
             },
             success: function(response) {
-                $('#message').html('Запись успешно добавлена');
+
+                if (response) {
+                    $('#message-success').html('Запись успешно добавлена');
+                } else {
+                    $('#message-error').html('Произошла ошибка. Попробуйте снова');
+                }
             }
         });
     }

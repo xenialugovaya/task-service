@@ -23,11 +23,8 @@ if ($_POST["action"] == "edit") {
         $output = array(
             'success' => true,
         );
-    } else {
-        $output = array(
-            'error' => true,
-        );
     }
+
     echo json_encode($output);
 
 }

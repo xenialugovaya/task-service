@@ -20,7 +20,7 @@ if ($_POST["action"] == "change_status") {
 
     if ($update) {
         $output = array(
-            'success' => 'Запись успешно изменена',
+            'success' => true,
         );
     }
     echo json_encode($output);
