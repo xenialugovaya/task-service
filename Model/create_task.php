@@ -3,19 +3,30 @@
 include 'database_connection.php';
 
 if ($_POST["action"] == "add_task") {
-    $user = htmlspecialchars($_POST["user"]);
-    $email = htmlspecialchars($_POST["email"]);
-    $task = htmlspecialchars($_POST["task"]);
+
+    $db = new Database();
+
+    $args = [
+        'user' => htmlspecialchars($_POST["user"]),
+        'email' => htmlspecialchars($_POST["email"]),
+        'task' => htmlspecialchars($_POST["task"]),
+    ];
 
     $query = '
             INSERT INTO tasks_tbl
             (user, email, task_description, status)
-            VALUES("' . $user . '", "' . $email . '", "' . $task . '", "0")
+            VALUES(:user, :email, :task, "0")
             ';
-    $statement = $connect->prepare($query);
-    if ($statement->execute()) {
+
+    $insert = $db::sql($query, $args);
+
+    if ($insert) {
         $output = array(
-            'success' => 'Запись успешно добавлена',
+            'success' => true,
+        );
+    } else {
+        $output = array(
+            'error' => true,
         );
     }
     echo json_encode($output);

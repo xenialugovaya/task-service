@@ -89,7 +89,7 @@ $(document).ready(function() {
             },
             success: function(data) {
                 if (data.success) {
-                    location.href = "<?php echo $base_url ?>/View/AdminView/index.php";
+                    location.href = "<?php echo BASE_URL ?>/View/AdminView/index.php";
                 }
                 if (data.error) {
                     $('#admin_login').val('Вход');

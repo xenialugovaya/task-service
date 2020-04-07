@@ -53,7 +53,7 @@ $(document).ready(function() {
             url: "../Model/tasks_fetch.php",
             type: "POST",
             data: {
-                action: 'index_fetch'
+                action: 'fetch'
             }
         }
     });

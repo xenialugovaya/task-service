@@ -2,8 +2,11 @@
 
 include 'database_connection.php';
 
+$db = new Database();
+
 $query = "
-		SELECT * FROM tasks_tbl
+        SELECT * FROM tasks_tbl
+        ORDER BY tasks_tbl.task_id DESC
 		";
 
 if (isset($_POST["search"]["value"])) {
@@ -11,31 +14,11 @@ if (isset($_POST["search"]["value"])) {
             WHERE tasks_tbl.user LIKE "%' . $_POST["search"]["value"] . '%"
             ';
 }
-$query .= '
-ORDER BY tasks_tbl.task_id DESC
-';
-/*
-if (isset($_POST["order"])) {
-$query .= '
-ORDER BY ' . $_POST['order']['0']['column'] . ' ' . $_POST['order']['0']['dir'] . '
-';
-} else {
-$query .= '
-ORDER BY tasks_tbl.task_id DESC
-';
-}
 
-if ($_POST["length"] != -1) {
-$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-}
- */
-$statement = $connect->prepare($query);
-
-$statement->execute();
-$result = $statement->fetchAll();
+$rows = $db::getRows($query);
 $data = [];
-$filtered_rows = $statement->rowCount();
-foreach ($result as $row) {
+
+foreach ($rows as $row) {
     if ($row["status"] === '0') {
         $status = '<p class="text-danger">Ожидает выполнения</p>';
         $change_status = '<p><input class="change_status" type="checkbox" data-change="' . $row["task_id"] . '" name="done" value="1"> Отметить как выполненное</p>';
@@ -59,9 +42,6 @@ foreach ($result as $row) {
 }
 
 $output = array(
-    'draw' => intval($_POST["draw"]),
-    "recordsTotal" => $filtered_rows,
-    "recordsFiltered" => get_total_records($connect, 'tasks_tbl'),
     "data" => $data,
 );
 echo json_encode($output);

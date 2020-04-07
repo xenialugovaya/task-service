@@ -1,5 +1,4 @@
 <?php
-include '../Model/database_connection.php';
 session_start();
 ?>
 

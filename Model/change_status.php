@@ -3,16 +3,22 @@ include 'database_connection.php';
 
 if ($_POST["action"] == "change_status") {
 
-    $id = $_POST["id"];
-    $status = $_POST["status"];
+    $db = new Database();
+
+    $args = [
+        'id' => $_POST["id"],
+        'status' => $_POST["status"],
+    ];
 
     $query = '
         UPDATE tasks_tbl
-        SET status = "' . $status . '"
-        WHERE task_id = "' . $id . '"
+        SET status = :status
+        WHERE task_id = :id
         ';
-    $statement = $connect->prepare($query);
-    if ($statement->execute()) {
+
+    $update = $db::sql($query, $args);
+
+    if ($update) {
         $output = array(
             'success' => 'Запись успешно изменена',
         );
