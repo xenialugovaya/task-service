@@ -2,7 +2,6 @@
 session_start();
 include 'header.php';
 include 'add_task.php';
-echo password_hash('123', PASSWORD_DEFAULT);
 ?>
 
 <div class="container" style="margin-top:30px">
