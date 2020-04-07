@@ -11,6 +11,9 @@ if (isset($_POST["search"]["value"])) {
             WHERE tasks_tbl.user LIKE "%' . $_POST["search"]["value"] . '%"
             ';
 }
+$query .= '
+ORDER BY tasks_tbl.task_id DESC
+';
 /*
 if (isset($_POST["order"])) {
 $query .= '
