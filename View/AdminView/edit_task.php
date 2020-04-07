@@ -81,9 +81,9 @@ $('#edit_task_form').validate({
             },
             success: function(response) {
                 if (response) {
-                    $('#message-success').html('Запись успешно изменена');
+                    $('#edit-message-success').html('Запись успешно изменена');
                 } else {
-                    $('#message-error').html('Произошла ошибка. Попробуйте снова');
+                    $('#edit-message-error').html('Произошла ошибка. Попробуйте снова');
                 }
             }
         });
