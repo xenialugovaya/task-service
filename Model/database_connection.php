@@ -9,21 +9,3 @@ function get_total_records($connect, $table_name)
     $statement->execute();
     return $statement->rowCount();
 }
-
-function load_tasks_list($connect)
-{
-
-    $query = "
-SELECT * FROM tasks_tbl
-";
-    $statement = $connect->prepare($query);
-    $statement->execute();
-    $result = $statement->fetchAll();
-    $output = '';
-    foreach ($result as $row) {
-
-        $output .= '<option value="' . $row["task_id"] . '">' . $row["user"] . '</option>';
-    }
-    return $output;
-
-}

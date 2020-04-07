@@ -12,14 +12,13 @@ if (isset($_POST["search"]["value"])) {
             ';
 }
 /*
-$query .= 'GROUP BY tbl_student.student_id ';
 if (isset($_POST["order"])) {
 $query .= '
 ORDER BY ' . $_POST['order']['0']['column'] . ' ' . $_POST['order']['0']['dir'] . '
 ';
 } else {
 $query .= '
-ORDER BY tbl_student.student_roll_number ASC
+ORDER BY tasks_tbl.task_id DESC
 ';
 }
 

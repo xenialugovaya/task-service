@@ -4,9 +4,7 @@ session_start();
 if (isset($_SESSION["admin_id"])) {
     header('location:./AdminView/index.php');
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
