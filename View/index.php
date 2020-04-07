@@ -22,8 +22,8 @@ include 'header.php';
                             <th>Имя пользователя</th>
                             <th>Email</th>
                             <th>Задача</th>
-                            <th>Изменения</th>
                             <th>Статус</th>
+                            <th>Изменения</th>
                         </tr>
                     </thead>
                     <tbody>

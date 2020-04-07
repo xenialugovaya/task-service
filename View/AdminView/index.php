@@ -29,7 +29,6 @@ include 'edit_task.php';
                         </tr>
                     </thead>
                     <tbody>
-
                     </tbody>
                 </table>
             </div>

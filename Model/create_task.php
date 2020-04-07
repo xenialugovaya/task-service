@@ -3,9 +3,9 @@
 include 'database_connection.php';
 
 if ($_POST["action"] == "add_task") {
-    $user = $_POST["user"];
-    $email = $_POST["email"];
-    $task = $_POST["task"];
+    $user = htmlspecialchars($_POST["user"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $task = htmlspecialchars($_POST["task"]);
 
     $query = '
             INSERT INTO tasks_tbl

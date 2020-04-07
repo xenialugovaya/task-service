@@ -1,14 +1,14 @@
 <?php
 include 'database_connection.php';
 
-if ($_POST["action"] == "edit") {
+if ($_POST["action"] == "change_status") {
 
-    $id = $_POST["edit_task_id"];
-    $task = htmlspecialchars($_POST["edit_task_field"]);
-    $edit_status = 'отредактировано администратором';
+    $id = $_POST["id"];
+    $status = $_POST["status"];
+
     $query = '
         UPDATE tasks_tbl
-        SET task_description = "' . $task . '", edit_status = "' . $edit_status . '"
+        SET status = "' . $status . '"
         WHERE task_id = "' . $id . '"
         ';
     $statement = $connect->prepare($query);

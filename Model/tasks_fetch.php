@@ -36,10 +36,10 @@ $filtered_rows = $statement->rowCount();
 foreach ($result as $row) {
     if ($row["status"] === '0') {
         $status = '<p class="text-danger">Ожидает выполнения</p>';
-        $change_status = '<p><input type="checkbox" id="done' . $row["task_id"] . '" name="done" value="1"> Отметить как выполненное</p>';
+        $change_status = '<p><input class="change_status" type="checkbox" data-change="' . $row["task_id"] . '" name="done" value="1"> Отметить как выполненное</p>';
     } else {
         $status = '<p class="text-success">Выполнено</p>';
-        $change_status = '<p><input type="checkbox" id="done' . $row["task_id"] . '" name="done" value="0"> Отметить как не выполненное</p>';
+        $change_status = '<p><input class="change_status" type="checkbox" data-change="' . $row["task_id"] . '" name="done" value="0"> Отметить как не выполненное</p>';
     }
     if ($row["edit_status"]) {
         $edit_status = '<p class="text-success">' . $row["edit_status"] . '</p>';

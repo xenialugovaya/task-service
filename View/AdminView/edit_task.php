@@ -39,6 +39,22 @@ $(document).on('click', '.edit_task', function() {
     $('#editModal').modal('show');
 });
 
+$(document).on('click', '.change_status', function() {
+    const task_id = $(this).attr('data-change');
+    const status = $(this).val();
+    $.ajax({
+        url: "../../Model/change_status.php",
+        method: "POST",
+        data: {
+            id: task_id,
+            status: status,
+            action: 'change_status'
+        },
+        success: function(data) {}
+    })
+});
+
+
 $("#save_new_task").on('click', function() {
     $("#edit_task_form").submit();
 });
